@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Sua escolha</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-item-group>
+                <ion-item-divider color="light">
+                    <ion-icon ios="ios-calendar" md="md-calendar" item-left></ion-icon>
+                    OBSERVAÇÕES                
+                </ion-item-divider>
+                <ion-item>{{ carro.nome }}</ion-item>
+                <ion-item>{{ carro.preco }}</ion-item>
+                <ion-item>{{ carro.tempo }}</ion-item>
+            </ion-item-group>
+            
+
+                <ion-item-divider color="light">
+                    TOTAL: R${{ precoTotal }}
+                </ion-item-divider>
+
+        </ion-card-content>
+    </ion-card>
+    <button ion-button block (click)="avancarAgendamento()" >Avançar no agendamento</button>
+</ion-content>

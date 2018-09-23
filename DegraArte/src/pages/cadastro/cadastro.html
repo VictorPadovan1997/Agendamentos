@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Estamos quase lá.</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1>{{ agendamento.carro.nome }}</h1>
+  <p>R${{ agendamento.valor }}</p>
+
+  <form [formGroup]="agendamentoForm" (ngSubmit)="agenda()">
+    <ion-item>
+      <ion-label [hidden]="(nome.dirty || nome.touched) && nome.invalid" stacked>Nome</ion-label>
+      <ion-input [(ngModel)]="agendamento.nome" formControlName="nome" name="nome"></ion-input>
+      <ion-label *ngIf="nome.invalid && (nome.dirty || nome.touched)" color="danger" stacked>Nome obrigatório</ion-label>
+    </ion-item>
+
+
+
+        <!-- Variavel ENDEREÇO porem está pegando NUMERO DA PESSOA -->
+    <ion-item>
+        <ion-label [hidden]="(endereco.dirty || endereco.touched) && endereco.invalid" stacked>DDD + TELEFONE</ion-label>
+        <ion-input [(ngModel)]="agendamento.endereco" formControlName="endereco" name="endereco"></ion-input>
+        <ion-label *ngIf="endereco.invalid && (endereco.dirty || endereco.touched)" color="danger" stacked>Endereco obrigatório</ion-label>
+    </ion-item>
+    <ion-item>
+
+      <!-- Variavel EMAIL porem está pegando Nome do cabele. -->
+     
+        <ion-label [hidden]="(email.dirty || email.touched) && email.invalid" stacked>Você Gostaria de Agendar com LUCAS ou ALISSON ?</ion-label> 
+        <ion-input [(ngModel)]="agendamento.email" formControlName="email" name="email"></ion-input>
+        <ion-label *ngIf="email.invalid && (email.dirty || email.touched)" color="danger" stacked>CAMPO OBRIGATORIO</ion-label>
+    </ion-item>
+
+
+    <ion-item (click)="selecionaData()">
+        <ion-label [hidden]="(data.dirty || data.touched) && data.invalid" stacked> Escolha uma Data e Hora</ion-label>
+        <ion-datetime disabled="false" [(ngModel)]="agendamento.data" formControlName="data" name="data" displayFormat="DD/MM/YY HH:mm" doneText="Ok" cancelText="Cancelar"></ion-datetime>
+        <ion-label *ngIf="data.invalid && (data.dirty || data.touched)" color="danger" stacked>Data e Hora obrigatório</ion-label>
+    </ion-item>
+
+
+    <button ion-button type="submit" block [disabled]="agendamentoForm.invalid"> Agendamentos</button>
+  </form>
+</ion-content>
